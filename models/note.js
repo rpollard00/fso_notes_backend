@@ -1,13 +1,14 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
+const { info, error } = require("../utils/logger.js")
 
-const url = process.env.MONGODB_URI_NOTES;
+const url = process.env.MONGODB_URI_NOTES
 
-console.log("connecting to", url);
+info("connecting to", url)
 
 mongoose
   .connect(url)
-  .then((result) => console.log("connected to MongoDB"))
-  .catch((error) => console.log("error connecting to MongoDB:", error.message));
+  .then((result) => info("connected to MongoDB"))
+  .catch((error) => error("error connecting to MongoDB:", error.message))
 
 const noteSchema = new mongoose.Schema({
   content: {
@@ -20,14 +21,14 @@ const noteSchema = new mongoose.Schema({
     required: true,
   },
   important: Boolean,
-});
+})
 
 noteSchema.set("toJSON", {
   transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString();
-    delete returnedObject._id;
-    delete returnedObject.__v;
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
   },
-});
+})
 
-module.exports = mongoose.model("Note", noteSchema);
+module.exports = mongoose.model("Note", noteSchema)
