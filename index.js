@@ -1,4 +1,3 @@
-const { response } = require("express");
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -30,12 +29,6 @@ app.get("/api/notes/:id", (request, response, next) => {
     })
     .catch((error) => next(error));
 });
-
-const generateId = () => {
-  const maxId =
-    notes.length > 0 ? Math.max(...notes.map((note) => note.id)) : 0;
-  return maxId + 1;
-};
 
 app.post("/api/notes", (request, response, next) => {
   const body = request.body;
