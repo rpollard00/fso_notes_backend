@@ -1,4 +1,4 @@
-require("dotenv").config()
+const config = require("./utils/config")
 const express = require("express")
 const app = express()
 const cors = require("cors")
@@ -97,6 +97,5 @@ const errorHandler = (error, request, response, next) => {
 
 app.use(errorHandler)
 
-const PORT = process.env.PORT || 3001
-app.listen(PORT)
-logger.info(`Server running on port ${PORT}`)
+app.listen(config.PORT)
+logger.info(`Server running on port ${config.PORT}`)

@@ -1,7 +1,8 @@
 const mongoose = require("mongoose")
 const { info, error } = require("../utils/logger.js")
+const config = require("../utils/config.js")
 
-const url = process.env.MONGODB_URI_NOTES
+const url = config.MONGODB_URI
 
 info("connecting to", url)
 
