@@ -1,8 +1,10 @@
 const config = require("./utils/config.js")
 const express = require("express")
+require('express-async-errors')
 const app = express()
 const cors = require("cors")
 const notesRouter = require("./controllers/notes")
+const usersRouter = require("./controllers/users")
 const middleware = require("./utils/middleware")
 const logger = require("./utils/logger")
 const mongoose = require("mongoose")
@@ -20,6 +22,7 @@ app.use(express.json())
 app.use(middleware.requestLogger)
 
 app.use("/api/notes", notesRouter)
+app.use("/api/users", usersRouter)
 
 // last middleware
 app.use(middleware.unknownEndpoint)

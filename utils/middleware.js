@@ -1,9 +1,13 @@
 const logger = require("./logger")
 
 const requestLogger = (request, response, next) => {
+  // don't log password fields
+  const hideSensitiveBody = (b) =>
+    'password' in b ? { ...b, password: '<hidden>' } : b
+
   logger.info("Method:", request.method)
   logger.info("Path:  ", request.path)
-  logger.info("Body:  ", request.body)
+  logger.info("Body:  ", hideSensitiveBody(request.body))
   logger.info("---")
   next()
 }

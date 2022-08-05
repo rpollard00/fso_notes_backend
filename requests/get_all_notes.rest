@@ -1,12 +1,16 @@
 GET http://localhost:3001/api/notes
 ###
 
+GET http://localhost:3001/api/users
+###
+
 POST http://localhost:3001/api/notes
 Content-Type: application/json
 
 {
   "content": "Cool new important note",
-  "important": true
+  "important": true,
+  "userId": "62ed8b0b7eed14286b48743f"
 }
 
 ###
@@ -17,8 +21,19 @@ Content-Type: application/json
 {
   "content": "I changed the note!",
   "important": false
+  
 }
 
 ###
 
 DELETE http://localhost:3001/api/notes/62e8a675f610f09e2534617a
+
+###
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username": "slimshdady",
+  "name": "Marshall",
+  "password": "sebulbarules"
+}
