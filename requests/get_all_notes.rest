@@ -6,9 +6,10 @@ GET http://localhost:3001/api/users
 
 POST http://localhost:3001/api/notes
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNsaW1zaGRhZHkiLCJpZCI6IjYyZWQ4YjBiN2VlZDE0Mjg2YjQ4NzQzZiIsImlhdCI6MTY1OTczODc2MH0.u-eRRfTy1xPTANC5uN8-g0jqnW65ivbSY5tfNprOwFo
 
 {
-  "content": "Cool new important note",
+  "content": "Savage Note time",
   "important": true,
   "userId": "62ed8b0b7eed14286b48743f"
 }
@@ -35,5 +36,14 @@ Content-Type: application/json
 {
   "username": "slimshdady",
   "name": "Marshall",
+  "password": "sebulbarules"
+}
+
+###
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "slimshdady",
   "password": "sebulbarules"
 }
