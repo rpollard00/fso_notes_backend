@@ -26,6 +26,12 @@ app.use("/api/notes", notesRouter)
 app.use("/api/users", usersRouter)
 app.use("/api/login", loginRouter)
 
+// testing router
+if (process.env.NODE_ENV === 'test') {
+  const testingRouter = require('./controllers/testing')
+  app.use('/api/testing', testingRouter)
+}
+
 // last middleware
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
